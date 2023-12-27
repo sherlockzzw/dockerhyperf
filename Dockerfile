@@ -22,6 +22,8 @@ RUN pecl install swoole && docker-php-ext-enable swoole
 # 安装 Redis 扩展
 RUN pecl install redis && docker-php-ext-enable redis
 
+# 安装 sockets 扩展
+RUN docker-php-ext-install sockets
 
 
 # 清理不需要的文件和缓存
