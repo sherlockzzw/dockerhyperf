@@ -30,5 +30,8 @@ RUN docker-php-ext-install pcntl
 # 清理不需要的文件和缓存
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# 暴露 9501 端口（如果需要）
-EXPOSE 9501
+# 设置时区为Asia/Shanghai
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+# 暴露 9501 swagger默认9500
+EXPOSE 9501 9500

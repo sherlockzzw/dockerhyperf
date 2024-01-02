@@ -11,6 +11,7 @@ services:
       #- /Users/sherlock/code/hyperfConfig/config/php:/usr/local/etc/php
     ports:
       - "9501:9501"
+      - "9500:9500"
     depends_on:
       - mysql
       - redis
@@ -27,6 +28,7 @@ services:
       MYSQL_DATABASE: hyperf
       MYSQL_USER: hyperf_guest
       MYSQL_PASSWORD: hyperf_guest_password
+      TZ: Asia/Shanghai
     ports:
       - "3306:3306"
 
