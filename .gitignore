@@ -1,4 +1,5 @@
-app/
+/app/*
+!/app
 config/
 .env
 .idea
