@@ -7,7 +7,7 @@
 #### 构建容器
 
 ```shell
-$ git clone https://github.com/gitupzzw/dockerhyperf.git 
+$ git clone https://github.com/sherlockzzw/dockerhyperf.git
 
 $ cd hyperfConfig
 
