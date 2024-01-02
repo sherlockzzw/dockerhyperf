@@ -55,6 +55,11 @@ https://github.com/qbhy/hyperf-auth
 Stack trace:
 
 找到 AuthCommand类 use function Hyperf\Support\env;即可
-hyperf/validation
 
-``` composer
+
+``` composer常用包安装
+composer require hyperf/validation
+composer require hyperf/swagger
+
+``` 发布配置
+php bin/hyperf.php vendor:publish hyperf/swagger
