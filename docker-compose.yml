@@ -52,7 +52,7 @@ services:
       RABBITMQ_DEFAULT_USER: hyperf_rabbitmq_user
       RABBITMQ_DEFAULT_PASS: hyperf_rabbitmq_password
 
-#127.0.0.1
+
   nginx:
     image: nginx:latest
     container_name: hyperf_nginx
