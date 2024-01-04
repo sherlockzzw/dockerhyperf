@@ -57,5 +57,6 @@ services:
     container_name: hyperf_nginx
     volumes:
       - /Users/sherlock/code/hyperfConfig/config/nginx:/etc/nginx/conf.d
+      - /Users/sherlock/code/hyperfConfig/logs/nginx:/var/log/nginx
     ports:
       - "80:80"
