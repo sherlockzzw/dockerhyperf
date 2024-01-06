@@ -3,4 +3,4 @@
 config/
 .env
 .idea
-/logs/nginx/
+logs/nginx/*
