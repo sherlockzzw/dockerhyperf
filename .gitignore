@@ -4,3 +4,5 @@ config/
 .env
 .idea
 logs/nginx/*
+logs/redis/*
+logs/kafka/*
