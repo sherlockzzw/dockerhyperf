@@ -12,10 +12,10 @@ services:
     ports:
       - "9501:9501"
       - "9500:9500"
+      - "9092:9092"
     depends_on:
       - mysql
       - redis
-      - rabbitmq
       - nginx
   mysql:
     image: mysql:8
@@ -40,17 +40,18 @@ services:
     volumes:
       - /Users/sherlock/code/hyperfConfig/config/redis:/usr/local/etc/redis
 
-  rabbitmq:
-    image: rabbitmq:management
-    container_name: hyperf_rabbitmq
-    volumes:
-      - /Users/sherlock/code/hyperfConfig/config/rabbitmq:/etc/rabbitmq
+  kafka:
+    image: wurstmeister/kafka:latest
+    container_name: hyperf_kafka
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "9092:9092"
     environment:
-      RABBITMQ_DEFAULT_USER: hyperf_rabbitmq_user
-      RABBITMQ_DEFAULT_PASS: hyperf_rabbitmq_password
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CREATE_TOPICS: "topic_name:1:1"  # 可以在这里设置初始化的topic
+    volumes:
+      - /Users/sherlock/code/hyperfConfig/config/kafka:/opt/kafka/config
 
 
   nginx:
