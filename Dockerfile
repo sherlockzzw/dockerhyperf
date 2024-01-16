@@ -1,6 +1,8 @@
-FROM php:8.2-fpm
+FROM shinsenter/hyperf:latest
 
-WORKDIR /var/www
+WORKDIR /var/www/html
+
+RUN sed -i 's/http:\/\/ports.ubuntu.com/http:\/\/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 # 更新软件包列表并安装常用依赖
 RUN apt-get update && apt-get install -y \
@@ -8,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
+    php-pear \
+    php-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # 安装 Composer
@@ -17,10 +21,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install bcmath pdo_mysql opcache
 
 # 安装 Swoole 扩展
-RUN pecl install swoole && docker-php-ext-enable swoole
+RUN pecl install swoole && docker-php-ext-install swoole
 
 # 安装 Redis 扩展
-RUN pecl install redis && docker-php-ext-enable redis
+RUN pecl install redis && docker-php-ext-install redis
 
 # 安装 sockets 扩展
 RUN docker-php-ext-install sockets
