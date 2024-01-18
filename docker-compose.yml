@@ -21,7 +21,7 @@ services:
     container_name: hyperf_mysql
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - /Users/sherlock/code/hyperfConfig/config/mysql:/etc/mysql/conf.d
+      - /Users/sherlock/code/hyperfConfig/config/mysql:/etc/my.cnf
     environment:
       MYSQL_ROOT_PASSWORD: hyperf_root_password
       MYSQL_DATABASE: hyperf
