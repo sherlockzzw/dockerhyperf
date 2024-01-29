@@ -23,10 +23,10 @@ services:
     volumes:
       - /Users/sherlock/code/hyperfConfig/config/mysql:/etc/my.cnf
     environment:
-      MYSQL_ROOT_PASSWORD: hyperf_root_password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: hyperf
-      MYSQL_USER: hyperf_guest
-      MYSQL_PASSWORD: hyperf_guest_password
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TZ: Asia/Shanghai
     ports:
       - "3306:3306"
@@ -45,8 +45,8 @@ services:
     ports:
       - "9092:9092"
     environment:
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092  # 监听地址和协议
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.110.254:9092
+      KAFKA_LISTENERS: ${KAFKA_LISTENERS}  # 监听地址和协议
+      KAFKA_ADVERTISED_LISTENERS: ${KAFKA_ADVERTISED_LISTENERS}
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_CREATE_TOPICS: "topic_name:1:1"  # 可以在这里设置初始化的topic
