@@ -37,5 +37,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # 设置时区为Asia/Shanghai
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+# 指定禁用的函数列表
+RUN sed -i '/^disable_functions/c\disable_functions = passthru,exec,system,eval,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,fsocket,popen' /usr/local/etc/php/cli/php.ini
 # 暴露 9501 swagger默认9500
 EXPOSE 9501 9500
